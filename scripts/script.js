@@ -13,19 +13,29 @@ const maxGuesses = 6;
 // Função para reiniciar o jogo
 const resetGame = () => {
     // Resetando todas as variáveis do jogo e elementos da interface do usuário (UI)
-    correctLetters = []
+    correctLetters = [];
     wrongGuessCount = 0;
     hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
     keyboardDiv.querySelectorAll("button").forEach(btn => btn.disabled = false);
+
+    // Gerando a exibição inicial para a palavra
     wordDisplay.innerHTML = currentWord.split("").map(() => `<li class="letter"></li>`).join("");
     gameModal.classList.remove("show");
 }
 
 // Função para obter uma palavra aleatória
 const getRandomWord = () => {
-    // Selecionando uma palavra e dica aleatórias da lista de palavras (wordList)
-    const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
+    // Verificando se a tela é menor que 782 pixels
+    const isSmallScreen = window.innerWidth < 782;
+
+    // Filtrando a lista de palavras com base na largura da tela
+    const filteredWordList = isSmallScreen
+        ? wordList.filter(entry => entry.word.length <= 8)
+        : wordList;
+
+    // Selecionando uma palavra e dica aleatórias da lista filtrada
+    const { word, hint } = filteredWordList[Math.floor(Math.random() * filteredWordList.length)];
     currentWord = word;
     document.querySelector(".hint-text b").innerText = hint;
     resetGame();

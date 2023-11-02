@@ -205,7 +205,6 @@ li.guessed {
 
 @media (max-width: 782px) {
     .container {
-        position: relative;
         flex-direction: column;
         padding: 30px 15px;
         align-items: center;
@@ -220,10 +219,9 @@ li.guessed {
     }
 
     .game-box .correct-words {
-        position: absolute;
-        top: 5%;
+        position: relative;
+        margin: -40px 0;
         left: 50%;
         transform: translateX(-50%);
-        max-width: 100%;
     }
 }

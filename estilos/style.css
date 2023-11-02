@@ -108,6 +108,8 @@ li.guessed {
 
 .game-box .correct-words {
     background: #fff;
+    padding: 5px;
+    margin-bottom: 20px;
 }
 
 .game-box .guesses-text b {

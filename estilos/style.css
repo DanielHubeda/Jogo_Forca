@@ -110,7 +110,7 @@ li.guessed {
 
 .game-box .correct-words {
     background: #fff;
-    padding: 10px;
+    padding: 5px;
 }
 
 .game-box .guesses-text b {
@@ -207,6 +207,10 @@ li.guessed {
 }
 
 @media (max-width: 782px) {
+    body {
+        height: 100vh;
+    }
+
     .container {
         flex-direction: column;
         padding: 30px 15px;

@@ -204,6 +204,10 @@ li.guessed {
 }
 
 @media (max-width: 782px) {
+    body {
+        min-height: auto;
+    }
+
     .container {
         flex-direction: column;
         padding: 30px 15px;

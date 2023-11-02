@@ -15,46 +15,20 @@ body {
 }
 
 .container {
-    z-index: 0;
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 500px;
     width: 700px;
     background:  #fff;
+    margin: 50px 20px;
     border: 1px solid rgba(0, 0, 0, 0.425);
     border-radius: 5px;
 }
 
-.background-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(255, 255, 255, 0.2); /* Adjust the opacity as needed */
-    z-index: -1;
-}
-
-.background-image {
-    z-index: -1;
-    background: url('/images/hangman-6.svg') no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 75%;
-    width: 37%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transition: z-index 0.3s ease;
-    transform: translate(-50%, -50%);
-}
-
 .text-container {
     text-align: center;
-    margin: 20px;
-    padding: 10px;
+    margin-top: 50px;
 }
 
 .text-container > h1 {
@@ -69,7 +43,11 @@ body {
 
 .text-container > p {
     font-size: 1.1em;
-    margin: 34% 0 0 0;
+    margin: 44% 0 0 0;
+}
+
+.difficulty-buttons {
+    margin: 5px;
 }
 
 .button {

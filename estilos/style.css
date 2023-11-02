@@ -21,7 +21,6 @@ body {
     background: #fff;
     display: flex;
     gap: 70px;
-    justify-content: center;
     align-items: flex-end;
     padding: 60px 40px;
     border-radius: 10px;
@@ -109,6 +108,7 @@ li.guessed {
 
 .game-box .correct-words {
     background: #fff;
+    margin: 10px 0 50px 0;
 }
 
 .game-box .guesses-text b {
@@ -205,10 +205,6 @@ li.guessed {
 }
 
 @media (max-width: 782px) {
-    body {
-        min-height: auto;
-    }
-
     .container {
         flex-direction: column;
         padding: 30px 15px;
@@ -225,7 +221,7 @@ li.guessed {
 
     .game-box .correct-words {
         position: absolute;
-        top: 13%;
+        top: 5%;
         left: 50%;
         transform: translateX(-50%);
     }

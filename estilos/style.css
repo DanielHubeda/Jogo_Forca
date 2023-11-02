@@ -219,10 +219,10 @@ li.guessed {
     }
 
     .game-box .correct-words {
-        position: relative;
-        bottom: 300px;
+        position: absolute;
+        top: 5%;
         left: 50%;
-        margin: -40px 0;
         transform: translateX(-50%);
+        max-width: 100%;
     }
 }

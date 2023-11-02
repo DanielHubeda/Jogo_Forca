@@ -1,5 +1,6 @@
 // Selecionando elementos do DOM
 const hangmanImage = document.querySelector(".hangman-box img");
+const correctWords = document.querySelector(".correct-words b");
 const wordDisplay = document.querySelector(".word-display");
 const guessesText = document.querySelector(".guesses-text b");
 const keyboardDiv = document.querySelector(".keyboard");
@@ -7,11 +8,20 @@ const gameModal = document.querySelector(".game-modal");
 const playAgainBtn = document.querySelector(".play-again");
 
 // Variáveis do jogo
-let currentWord, correctLetters, wrongGuessCount;
+let currentWord, correctLetters, wrongGuessCount, totalCorrectWords;
 const maxGuesses = 6;
 
 // Função para reiniciar o jogo
 const resetGame = () => {
+
+    // Adiciona classes para a animação de rotação e dissolução
+    wordDisplay.classList.add("rotate-and-fade-in");
+
+    // Limpa as classes após a conclusão da animação
+    setTimeout(() => {
+        wordDisplay.classList.remove("rotate-and-fade-in");
+    }, 1000);  // Tempo da animação em milissegundos
+    
     // Resetando todas as variáveis do jogo e elementos da interface do usuário (UI)
     correctLetters = [];
     wrongGuessCount = 0;
@@ -69,31 +79,64 @@ const initGame = (button, clickedLetter) => {
 
     // Verificar se a letra clicada existe na palavra atual
     let letterFound = false;
+    let incorrectIndexes = []; // Armazenar os índices das letras incorretas
 
     [...currentWord].forEach((letter, index) => {
         const normalizedLetter = removeAccents(letter.toLowerCase());
 
         if (normalizedLetter === letterToCheck) {
             correctLetters.push(letter);
-            wordDisplay.querySelectorAll("li")[index].innerText = letter;
-            wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
+            const letterElement = wordDisplay.querySelectorAll("li")[index];
+            letterElement.innerText = letter;
+            letterElement.classList.add("guessed");
             letterFound = true;
+        } else {
+            incorrectIndexes.push(index);
         }
     });
+
+    // Verificar se todas as letras foram adivinhadas
+    if (correctLetters.length === currentWord.length) {
+        // Incrementar o número total de palavras corretas adivinhadas e atualizar a UI
+        totalCorrectWords = parseInt(correctWords.innerText) + 1;
+        correctWords.innerText = totalCorrectWords;
+
+        // Chamar a função gameOver, pois a palavra foi totalmente adivinhada
+        return gameOver(true);
+    }
 
     if (!letterFound) {
         // Se a letra clicada não existir, atualizar o contador de palpites errados e a imagem da forca
         wrongGuessCount++;
+        
         hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
+
+        // Adiciona classe para animação de adivinhação incorreta para todas as letras incorretas
+        incorrectIndexes.forEach(incorrectIndex => {
+            wordDisplay.querySelectorAll("li")[incorrectIndex].classList.add("incorrect-guess");
+        });
+
+        // Remove a classe após um tempo para evitar animação contínua
+        setTimeout(() => {
+            incorrectIndexes.forEach(incorrectIndex => {
+                wordDisplay.querySelectorAll("li")[incorrectIndex].classList.remove("incorrect-guess");
+            });
+        }, 500);  // Tempo da animação em milissegundos
     }
 
     button.disabled = true;
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
 
     // Chamar a função gameOver se uma dessas condições for atendida
-    if (wrongGuessCount === maxGuesses) return gameOver(false);
+    if (wrongGuessCount === maxGuesses) {
+        totalCorrectWords = 0;
+        correctWords.innerText = totalCorrectWords;
+        return gameOver(false);
+    }
+    
     if (correctLetters.length === currentWord.length) return gameOver(true);
 };
+
 
 // Criar botões do teclado
 for (let i = 97; i <= 122; i++) {

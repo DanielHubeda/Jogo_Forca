@@ -13,7 +13,7 @@ body {
     padding: 0 10px;
     justify-content: center;
     min-height: 100vh;
-    background:  #5E63BA;
+    background: #5E63BA;
 }
 
 .container {
@@ -50,7 +50,17 @@ body {
     justify-content: center;
 }
 
-.word-display .letter{
+.rotate-and-fade-in {
+    animation: rotateAndFadeIn 1s ease-in-out;
+}
+
+@keyframes rotateAndFadeIn {
+    0% { transform: rotate(0); opacity: 0; }
+    50% { transform: rotate(180deg); opacity: 0.5; }
+    100% { transform: rotate(360deg); opacity: 1; }
+}
+
+.word-display .letter {
     width: 28px;
     font-size: 2rem;
     font-weight: 600;
@@ -65,6 +75,26 @@ body {
     margin: -40px 0 35px;
 }
 
+li.guessed {
+    animation: guessed-animation 0.5s ease-in-out;
+}
+
+@keyframes guessed-animation {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Animações de Adivinhação Incorreta */
+.word-display li.incorrect-guess {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60%, 80% { transform: translateX(-5px); }
+    40%, 100% { transform: translateX(5px); }
+}
+
 .game-box h4 {
     text-align: center;
     font-size: 1.1rem;
@@ -74,6 +104,10 @@ body {
 
 .game-box h4 b {
     font-weight: 600;
+}
+
+.game-box .correct-words {
+    margin: 10px 0 50px 0;
 }
 
 .game-box .guesses-text b {
@@ -151,7 +185,7 @@ body {
 }
 
 .game-modal h4 {
-   font-size: 1.53rem;
+    font-size: 1.53rem;
 }
 
 .game-modal p {
@@ -182,5 +216,12 @@ body {
 
     .hangman-box h1 {
         display: none;
+    }
+
+    .game-box .correct-words {
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

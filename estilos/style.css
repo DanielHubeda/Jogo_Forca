@@ -21,8 +21,9 @@ body {
     background: #fff;
     display: flex;
     gap: 70px;
+    justify-content: center;
     align-items: flex-end;
-    margin: 20px 5px;
+    margin: 15px 5px;
     padding: 60px 40px;
     border-radius: 10px;
 }

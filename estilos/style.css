@@ -26,6 +26,11 @@ body {
     border-radius: 10px;
 }
 
+.navigate_before-container {
+    align-self: flex-start;
+    margin: -4% -2%;
+}
+
 .hangman-box img {
     max-width: 270px;
 }

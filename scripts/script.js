@@ -25,7 +25,10 @@ const resetGame = () => {
 }
 
 // Função para obter uma palavra aleatória
-const getRandomWord = () => {
+const getRandomWord = (difficulty) => {
+    // Carregar banco de palavras com base na dificuldade
+    const wordList = difficulty === 'hard' ? hardWordList : normalWordList;
+
     // Verificando se a tela é menor que 782 pixels
     const isSmallScreen = window.innerWidth < 782;
 
@@ -38,6 +41,8 @@ const getRandomWord = () => {
     const { word, hint } = filteredWordList[Math.floor(Math.random() * filteredWordList.length)];
     currentWord = word;
     document.querySelector(".hint-text b").innerText = hint;
+
+    // Resetando o jogo
     resetGame();
 }
 
@@ -53,21 +58,30 @@ const gameOver = (isVictory) => {
     }, 300);
 }
 
+// Função para remover acentos de uma letra
+const removeAccents = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
+
 // Função para inicializar o jogo ao clicar em uma letra
 const initGame = (button, clickedLetter) => {
-    const letterToCheck = clickedLetter.toLowerCase(); // Convertendo para minúsculas para consistência
+    const letterToCheck = removeAccents(clickedLetter.toLowerCase());
 
-    // Verificando se a letra clicada existe na palavra atual
-    if (currentWord.includes(letterToCheck)) {
-        // Mostrando todas as letras corretas no display da palavra
-        [...currentWord].forEach((letter, index) => {
-            if (letter === letterToCheck) {
-                correctLetters.push(letter);
-                wordDisplay.querySelectorAll("li")[index].innerText = letter;
-                wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
-            }
-        });
-    } else {
+    // Verificar se a letra clicada existe na palavra atual
+    let letterFound = false;
+
+    [...currentWord].forEach((letter, index) => {
+        const normalizedLetter = removeAccents(letter.toLowerCase());
+
+        if (normalizedLetter === letterToCheck) {
+            correctLetters.push(letter);
+            wordDisplay.querySelectorAll("li")[index].innerText = letter;
+            wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
+            letterFound = true;
+        }
+    });
+
+    if (!letterFound) {
         // Se a letra clicada não existir, atualizar o contador de palpites errados e a imagem da forca
         wrongGuessCount++;
         hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
@@ -107,9 +121,19 @@ const handleKeyDown = (event) => {
     }
 };
 
+// Adicione a função setDifficulty para a página principal do jogo
+const setDifficulty = (difficulty) => {
+    localStorage.setItem('currentDifficulty', difficulty);
+    getRandomWord(difficulty);
+};
+
+// Iniciar o jogo com a dificuldade armazenada localmente
+const storedDifficulty = localStorage.getItem('currentDifficulty') || 'normal';
+getRandomWord(storedDifficulty);
+playAgainBtn.addEventListener("click", () => getRandomWord(storedDifficulty));
+
 // Adicionar ouvinte de evento de pressionar uma tecla ao documento
 document.addEventListener("keydown", handleKeyDown);
 
-// Iniciar o jogo com uma palavra aleatória
-getRandomWord();
-playAgainBtn.addEventListener("click", getRandomWord);
+// Inicializar o jogo com a dificuldade padrão
+getRandomWord(storedDifficulty);

@@ -60,6 +60,7 @@ body {
 
 .word-display {
     display: flex;
+    margin-top: 40px;
     gap: 10px;
     list-style: none;
     align-items: center;
@@ -124,7 +125,7 @@ li.guessed {
 
 .game-box .correct-words {
     background: var(--cor3);
-    margin-bottom: 50px;
+    margin-top: -25px;
     padding: 5px;
 }
 

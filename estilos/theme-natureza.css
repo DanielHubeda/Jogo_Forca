@@ -1,0 +1,87 @@
+:root {
+    --cor1: #6ab04c; /* Nova cor dos botões se o mouse passar por cima */
+    --cor2: #45863e; /* Nova cor do corpo e dos botões */
+    --cor3: #d2f1c4; /* Nova cor do container */
+    --cor4: #000; /* Nova cor padrão do texto */
+}
+
+.container {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hangman-box h1 {
+    animation: swing 1s ease-in-out infinite alternate;
+}
+
+@keyframes swing {
+    from {
+        transform: rotate(-3deg);
+    }
+    to {
+        transform: rotate(3deg);
+    }
+}
+
+.word-display .letter.guessed {
+    animation: glow 0.5s ease-in-out;
+}
+
+@keyframes glow {
+    from {
+        background-color: #00FF00; /* Cor do destaque */
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
+:where(.game-modal, .keyboard) button {
+    animation: zoomIn 0.3s ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes FadeInNatureza {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.rotate-and-fade-in {
+    animation: FadeInNatureza 1s ease-in-out;
+}
+
+@keyframes gentle-oscillation {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    25%, 75% {
+        transform: translate3d(-2px, 0, 0);
+    }
+    50% {
+        transform: translate3d(2px, 0, 0);
+    }
+}
+
+.word-display li.incorrect-guess {
+    animation: gentle-oscillation 0.5s ease-in-out;
+}

@@ -9,6 +9,7 @@ const playAgainBtn = document.querySelector(".play-again");
 
 // Variáveis do jogo
 let currentWord, correctLetters, wrongGuessCount, totalCorrectWords;
+let usedWords = [];
 const maxGuesses = 6;
 
 // Função para reiniciar o jogo
@@ -38,6 +39,12 @@ const resetGame = () => {
 const getRandomWord = (difficulty) => {
     // Carregar banco de palavras com base na dificuldade
     const wordList = difficulty === 'hard' ? hardWordList : normalWordList;
+    const availableWords = wordList.filter(entry => !usedWords.includes(entry.word));
+
+    if (availableWords.length === 0) {
+        // Todas as palavras foram usadas, reinicie a lista
+        usedWords = [];
+    }
 
     // Verificando se a tela é menor que 782 pixels
     const isSmallScreen = window.innerWidth < 782;
@@ -51,6 +58,9 @@ const getRandomWord = (difficulty) => {
     const { word, hint } = filteredWordList[Math.floor(Math.random() * filteredWordList.length)];
     currentWord = word;
     document.querySelector(".hint-text b").innerText = hint;
+
+    // Adicionando a palavra utilizada à lista
+    usedWords.push(word);
 
     // Resetando o jogo
     resetGame();
@@ -151,15 +161,15 @@ const letterButtons = Array.from(keyboardDiv.querySelectorAll("button"));
 
 // Função para lidar com o evento de pressionar uma tecla
 const handleKeyDown = (event) => {
-    const pressedKey = event.key.toLowerCase();
+    const pressedKey = event.key.toUpperCase();
 
     // Verificar se a tecla pressionada é uma letra e não está desativada
-    if (/^[a-z]$/.test(pressedKey)) {
-        const correspondingButton = letterButtons.find(button => button.innerText.toLowerCase() === pressedKey);
+    if (/^[A-Z]$/.test(pressedKey)) {
+        const correspondingButton = letterButtons.find(button => button.innerText === pressedKey);
         
         // Se um botão com a letra correspondente for encontrado, simular um clique
         if (correspondingButton && !correspondingButton.disabled) {
-            initGame(correspondingButton, pressedKey.toUpperCase());
+            initGame(correspondingButton, pressedKey);
         }
     }
 };
@@ -179,4 +189,4 @@ playAgainBtn.addEventListener("click", () => getRandomWord(storedDifficulty));
 document.addEventListener("keydown", handleKeyDown);
 
 // Inicializar o jogo com a dificuldade padrão
-getRandomWord(storedDifficulty);
+getRandomWord(storedDifficulty, usedWords);

@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Início - Jogo da Forca</title>
     <link rel="stylesheet" href="estilos/difficulty.css">
+    <link rel="stylesheet" href="estilos/theme-normal.css" id="theme-stylesheet">
+
+    <!-- Script -->
+    <script src="scripts/theme-init.js"></script>
     <script src="scripts/difficulty.js" defer></script>
 </head>
-<body>
+<body class="hide">
     <main class="container">
+        <div class="theme-select">
+            <label for="theme">Escolha um tema:</label>
+            <select id="theme" onchange="changeTheme(this.value)">
+                <option value="theme-normal">Normal</option>
+                <option value="theme-natureza">Natureza</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
+        </div>
         <div class="text-container">
             <h1>Jogo da Forca</h1>
             <h2>Seja Bem Vindo!</h2>

@@ -1,0 +1,36 @@
+:root {
+    --cor1: #8286C9; /* Cor dos botões se o mouse passar por cima */
+    --cor2: #5E63BA; /* Cor do corpo e dos botões */
+    --cor3: #fff; /* Cor do container */
+    --cor4: #000; /* Cor padrão do texto */
+}
+
+.rotate-and-fade-in {
+    animation: rotateAndFadeInNatureza 1s ease-in-out;
+}
+
+@keyframes rotateAndFadeIn {
+    0% { transform: rotate(0); opacity: 0; }
+    50% { transform: rotate(180deg); opacity: 0.5; }
+    100% { transform: rotate(360deg); opacity: 1; }
+}
+
+li.guessed {
+    animation: guessed-animation 0.5s ease-in-out;
+}
+
+@keyframes guessed-animation {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Animações de Adivinhação Incorreta */
+.word-display li.incorrect-guess {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60%, 80% { transform: translateX(-5px); }
+    40%, 100% { transform: translateX(5px); }
+}

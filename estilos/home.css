@@ -32,6 +32,10 @@ body {
     border-radius: 5px;
 }
 
+.theme-select {
+    margin: 10px 0;
+}
+
 .text-container {
     text-align: center;
     margin-top: 50px;

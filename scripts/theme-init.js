@@ -1,5 +1,3 @@
-// scripts/theme-init.js
-
 // Função para obter o tema atual do localStorage ou retornar um tema padrão
 const getCurrentTheme = () => {
     return localStorage.getItem('currentTheme') || 'theme-normal';

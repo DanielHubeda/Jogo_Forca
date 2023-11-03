@@ -234,6 +234,7 @@ li.guessed {
     }
 
     .hangman-box img {
+        margin-top: -60px;
         max-width: 200px;
     }
 
@@ -242,10 +243,7 @@ li.guessed {
     }
     
     .game-box .correct-words {
-        position: absolute;
-        top: 17%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        margin: -50px 0 50px 0;
     }
     
     .game-box .word-display {

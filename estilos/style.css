@@ -58,7 +58,13 @@ body {
     text-transform: uppercase;
 }
 
-.word-display {
+.game-box .correct-words {
+    background: var(--cor3);
+    margin-top: -25px;
+    padding: 5px;
+}
+
+.game-box .word-display {
     display: flex;
     margin-top: 40px;
     gap: 10px;
@@ -121,12 +127,6 @@ li.guessed {
 
 .game-box h4 b {
     font-weight: 600;
-}
-
-.game-box .correct-words {
-    background: var(--cor3);
-    margin-top: -25px;
-    padding: 5px;
 }
 
 .game-box .guesses-text b {
@@ -240,15 +240,20 @@ li.guessed {
     .hangman-box h1 {
         display: none;
     }
-
-    .word-display {
-        margin: -10px;
-    }
-
+    
     .game-box .correct-words {
         position: absolute;
         top: 17%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+    
+    .game-box .word-display {
+        margin: -10px;
+    }
+    
+    .game-box .hint-text {
+        height: 20px;
+        margin-bottom: 40px;
     }
 }

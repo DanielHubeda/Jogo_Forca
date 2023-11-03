@@ -59,7 +59,6 @@ body {
 }
 
 .game-box .correct-words {
-    background: var(--cor3);
     margin-top: -25px;
     padding: 5px;
 }

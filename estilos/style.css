@@ -25,7 +25,8 @@ body {
 }
 
 .container {
-    margin-top:-25 0 5px 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
     width: 950px;
     background: var(--cor3);
     display: flex;
@@ -194,6 +195,8 @@ body {
     }
 
     .container {
+        position: relative;
+        top: 0.5%;
         flex-direction: column;
         padding: 30px 15px;
         align-items: center;

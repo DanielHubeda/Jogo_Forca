@@ -196,7 +196,7 @@ body {
 
     .container {
         position: relative;
-        top: 0.5%;
+        top: 0.1%;
         flex-direction: column;
         padding: 30px 15px;
         align-items: center;

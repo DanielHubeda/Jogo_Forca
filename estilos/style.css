@@ -25,8 +25,8 @@ body {
 }
 
 .container {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     width: 950px;
     background: var(--cor3);
     display: flex;

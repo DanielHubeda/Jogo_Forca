@@ -1,16 +1,12 @@
-// Palavras com no máximo 15 letras
+// Palavras com no máximo 12 letras
 const hardWordList = [
+    {
+        word: 'zeppelin',
+        hint: 'Tipo de dirigível ou aeronave mais leve que o ar.',
+    },
     {
         word: "sesquipedal",
         hint: "Relativo a palavras longas e complexas"
-    },
-    {
-        word: "perpendicular",
-        hint: "Formando ângulo reto"
-    },
-    {
-        word: "quintessência",
-        hint: "O mais puro exemplo de algo"
     },
     {
         word: "ubiquidade",

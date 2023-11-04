@@ -10,7 +10,7 @@ const playAgainBtn = document.querySelector(".play-again");
 // Variáveis do jogo
 let currentWord, correctLetters, wrongGuessCount, totalCorrectWords;
 let usedWords = [];
-const maxGuesses = 6;
+let maxGuesses = 6;
 
 // Função para reiniciar o jogo
 const resetGame = () => {
@@ -40,6 +40,7 @@ const getRandomWord = (difficulty) => {
     // Carregar banco de palavras com base na dificuldade
     const wordList = difficulty === 'hard' ? hardWordList : normalWordList;
     const availableWords = wordList.filter(entry => !usedWords.includes(entry.word));
+    maxGuesses = (difficulty === 'hard') ? 3 : 6;
 
     if (availableWords.length === 0) {
         // Todas as palavras foram usadas, reinicie a lista

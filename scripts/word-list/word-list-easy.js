@@ -1,5 +1,5 @@
-// Palavras com no máximo 15 letras
-const normalWordList = [
+// Palavras com no máximo 12 letras
+const easyWordList = [
     { 
         word: 'janela', 
         hint: 'Uma abertura em uma parede para deixar a luz entrar e permitir ver o exterior.' 

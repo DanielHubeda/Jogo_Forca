@@ -16,17 +16,17 @@
         <div class="theme-select">
             <label for="theme">Escolha um tema:</label>
             <select id="theme" onchange="changeTheme(this.value)">
-                <option value="theme-normal">Normal</option>
-                <option value="theme-natureza">Natureza</option>
-                <!-- Adicione mais opções conforme necessário -->
+                <option value="theme-normal" class="theme-normal">Normal</option>
+                <option value="theme-natureza" class="theme-natureza">Natureza</option>
             </select>
         </div>
         <div class="text-container">
             <h1>Jogo da Forca</h1>
             <h2>Seja Bem Vindo!</h2>
-            <p>Escolha uma dificuldade</p>
         </div>
         <div class="difficulty-buttons">
+            <p>Escolha uma dificuldade</p>
+            <button class="button" onclick="setDifficulty('easy')">Fácil</button>
             <button class="button" onclick="setDifficulty('normal')">Normal</button>
             <button class="button" onclick="setDifficulty('hard')">Difícil</button>
         </div>

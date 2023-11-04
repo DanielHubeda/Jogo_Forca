@@ -36,6 +36,20 @@ body {
     margin: 10px 0;
 }
 
+.theme-select select {
+    background: var(--cor1);
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+select option.theme-normal {
+    background: #8286C9;
+}
+
+select option.theme-natureza {
+    background: #6ab04c;
+}
+
 .text-container {
     text-align: center;
     margin-top: 50px;
@@ -51,19 +65,20 @@ body {
     padding: 10px;
 }
 
-.text-container > p {
-    font-size: 1.1em;
-    margin: 44% 0 0 0;
+.difficulty-buttons {
+    margin-top: 25px;
+    text-align: center;
 }
 
-.difficulty-buttons {
-    margin: 5px;
+.difficulty-buttons p {
+    font-size: 1.1em;
 }
 
 .button {
     height: 40px;
     width: 150px;
     background: var(--cor2);
+    margin: auto;
     border: 1px solid rgba(0, 0, 0, 0.404);
     border-radius: 2.5px;
     cursor: pointer;
@@ -73,4 +88,12 @@ body {
 .button:hover {
     box-shadow: 2px 2px 2px rgb(0, 0, 0);
     background: var(--cor1);
+}
+
+@media (max-width: 782px) {
+    .difficulty-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
 }

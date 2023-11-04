@@ -1,6 +1,7 @@
 // Função para obter o tema atual do localStorage ou retornar um tema padrão
 const getCurrentTheme = () => {
-    return localStorage.getItem('currentTheme') || 'theme-normal';
+    const storedTheme = localStorage.getItem('currentTheme');
+    return storedTheme || 'theme-normal';
 };
 
 // Função para exibir os elementos após aplicar o tema
